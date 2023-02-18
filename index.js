@@ -85,3 +85,17 @@ for (const file of eventFiles) {
 }
 
 client.login(token);
+
+const express = require('express');
+const app = express();
+
+// define the API endpoint for GET requests to /ping
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
+
+// start the server and listen on port 3000
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
+
