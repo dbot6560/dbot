@@ -19,8 +19,11 @@ const client = new Client({
 });
 const fs = require('fs');
 const path = require('path');
-const { prefix, token, clientId, guildId } = require('./config.json');
-
+require('dotenv').config(); // load the .env file
+const token = process.env.TOKEN;
+const clientId = process.env.CLIENT_ID;
+const guildId = process.env.GUILD_ID;
+const prefix = process.env.PREFIX;
 
 
 // Define client.commands as a new Discord Collection

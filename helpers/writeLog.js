@@ -1,4 +1,6 @@
-const { logsChannelId, token } = require('../config.json');
+require('dotenv').config(); // load the .env file
+const logsChannelId = process.env.LOGS_CHANNEL_ID;
+const token = process.env.TOKEN;
 const {
     Client,
     GatewayIntentBits
