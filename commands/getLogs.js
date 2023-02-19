@@ -1,4 +1,4 @@
-const Logs = require('../models/logs');
+const Logs = require('../models/Logs');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
