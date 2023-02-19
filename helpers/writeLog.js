@@ -1,4 +1,4 @@
-const Logs = require('../models/logs');
+const Logs = require('../models/Logs');
 
 const writeLog = (message, createBy) => {
     const log = {
