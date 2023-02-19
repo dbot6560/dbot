@@ -1,30 +1,16 @@
-require('dotenv').config(); // load the .env file
-const logsChannelId = process.env.LOGS_CHANNEL_ID;
-const token = process.env.TOKEN;
-const {
-    Client,
-    GatewayIntentBits
-} = require('discord.js');
+const Logs = require('../models/logs');
 
-const client = new Client({
-    intents: [
-        GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildMessageReactions,
-    ]
-});
-module.exports = {
-    writeLog(message) {
-        const logsChannel = client.channels.cache.get(logsChannelId);
-        if (logsChannel) {
-          logsChannel.send(`[${new Date().toISOString()}] ${message}`);
-        } else {
-          console.log('Could not find logs channel');
+const writeLog = (message, createBy) => {
+    const log = {
+        message: message,
+        create_by: createBy,
+        create_date: new Date()
+    };
+    Logs.create(log, (error, results) => {
+        if (error) {
+            console.log(error);
         }
-    }
-};
+    });
+}
 
-client.login(token);
+module.exports = { writeLog };
