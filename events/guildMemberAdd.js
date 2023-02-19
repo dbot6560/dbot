@@ -7,9 +7,12 @@ module.exports = {
         const user = member.id;
 
         if (user) {
-            member.guild.channels.cache.get('1073271617779662913').send({ content: `Welcome back, ${member}! You last joined on ${member.joinedAt}.` });
+            // send a welcome message to the user
+            member.send({ content: `Welcome back, ${member}! You last joined on ${member.joinedAt}.` });
+            //member.guild.channels.cache.get(user).send({ content: `Welcome back, ${member}! You last joined on ${member.joinedAt}.` });
         } else {
-            member.guild.channels.cache.get('1073271617779662913').send({ content: `Welcome to the server, ${member}!` });
+            member.send({ content: `Welcome to the server, ${member}!` });
+            //member.guild.channels.cache.get(user).send({ content: `Welcome to the server, ${member}!` });
         }
     }
 };
